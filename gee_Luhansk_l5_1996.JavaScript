@@ -1,6 +1,9 @@
-var start_date = '1996-08-01'
-var end_date = '1996-11-01'
-var step = 30
+//var table - imported training points with atribute "CLASS"
+//var table2 - imported boundaries of the area of interest (Luhansk region)
+var l8_raw2 = ee.ImageCollection("LANDSAT/LT05/C01/T1");
+var start_date = '1996-08-01';
+var end_date = '1996-11-01';
+var step = 30;
 function CloudRemoval (image) {
   var removeCloud = image.mask(image.select('BQA').eq(672))
   return removeCloud
@@ -56,7 +59,7 @@ Map.addLayer(classified.randomVisualizer(), {}, 'crop classification')
 
 Export.image.toDrive({
 'image': classified,
-'description': 'crop classification',
+'description': 'Luhansk_1996',
 'fileNamePrefix': 'composites_1996',
 'scale': 30,
 'region': table2,
