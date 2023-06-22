@@ -1,5 +1,6 @@
-//var geometry - imported boundaries of the area of interest (Luhansk region)
-//var train_set - imported training points with atribute "CLASS"
+var region = geometry;
+var train_set = ee.FeatureCollection('ft:1H5K4B7jcMtyMg15IW67RV1YKz68EQMhDm-wm5r4U'); //LUG_DON 2013 new point
+
 function maskL8sr(image) {
   var cloudShadowBitMask = (1 << 3);
   var cloudsBitMask = (1 << 5);
@@ -9,44 +10,36 @@ function maskL8sr(image) {
   return image.updateMask(mask);
 }
 
-var rg = ['B4', 'B3', 'B2'];
 var bb = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
 
-var dataset1 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
-                  .filterDate('2013-03-01', '2014-04-30')
-                  .map(maskL8sr).select(bb);
+var dataset1 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-04-01', '2013-06-01').map(maskL8sr).select(bb).median().clip(region);
+var dataset2 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-06-01', '2013-07-01').map(maskL8sr).select(bb).median().clip(region);
+var dataset3 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-07-01', '2013-09-01').map(maskL8sr).select(bb).median().clip(region);
+var dataset4 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-08-01', '2013-12-01').map(maskL8sr).select(bb).median().clip(region);
 
-var dataset1 = (dataset1.median()).clip(kiev_reg_districts).select(bb);
+var dataset = dataset1.addBands(dataset2).addBands(dataset3).addBands(dataset4).clip(region);
+Map.addLayer(dataset)
 
-
-var dataset2 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
-                  .filterDate('2014-05-01', '2014-05-30')
-                  .map(maskL8sr).select(bb);
-
-var dataset2 = (dataset2.median()).clip(kiev_reg_districts).select(bb);
-
-var rgbVis = {
-  min: 0,
-  max: 3000,
-  bands: rg,
-};
-var dataset = dataset1.addBands(dataset2).clip(geometry);
-var train_set = train_set.filterBounds(kiev_reg_districts);
+var train_set = train_set.filterBounds(region);
 train_set = train_set.map(function(f) { return f.buffer(15)});
-var s1stack = (dataset);
+
 var training_scale = 10;
 var training_property = 'CLASS';
-var training = s1stack.sampleRegions(train_set, null, training_scale);
+
+var training = dataset.sampleRegions(train_set, null, training_scale);
 
 var trained = ee.Classifier.randomForest(100).train(training, training_property);
-var classified = s1stack.classify(trained).clip(geometry);
+var classified = dataset.classify(trained).clip(region);
+
+
 Export.image.toDrive({
   image: classified.toByte(),
-  description: 'Luhansk_2014',
- 'fileNamePrefix': 'Luhansk_2014',
+  description: 'Luhansk_2013',
+ 'fileNamePrefix': 'composites_2013',
   scale: 30,
-  region: geometry,
+  region: region,
   fileFormat: 'GeoTIFF',
+  'crs': 'EPSG:32636',
   'maxPixels' : 10000000000000,
   formatOptions: {
     cloudOptimized: true
