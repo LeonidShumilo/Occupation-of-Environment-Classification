@@ -25,6 +25,8 @@ var dataset2 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-06-
 var dataset3 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-07-01', '2013-09-01').map(maskL8sr).select(bb).median().clip(region);
 var dataset4 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-08-01', '2013-12-01').map(maskL8sr).select(bb).median().clip(region);
 
+//Merging of datasets
+
 var dataset = dataset1.addBands(dataset2).addBands(dataset3).addBands(dataset4).clip(region);
 Map.addLayer(dataset)
 
