@@ -56,11 +56,11 @@ var l8_13_3 = l7_col.filterBounds(table2).filterDate('2000-03-01','2000-12-01').
 
 var l8_13 = ee.ImageCollection([l8_13_3,l8_13_2,l8_13_1]).mosaic();
 
+//Merging of datasets
+
 var l8_merged = l8_1.addBands(l8_2).addBands(l8_3).addBands(l8_4).addBands(l8_5).addBands(l8_7).addBands(l8_8).addBands(l8_12).addBands(l8_13);
 
 var label = 'CLASS_2000'
-Map.addLayer(table)
-print(l8_merged)
 var training = l8_merged.sampleRegions({
   collection: table,
   properties: [label],
