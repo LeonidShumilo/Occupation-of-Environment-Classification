@@ -39,7 +39,7 @@ var training_property = 'CLASS';
 
 var training = dataset.sampleRegions(train_set, null, training_scale);
 
-var trained = ee.Classifier.randomForest(100).train(training, training_property);
+var trained = ee.Classifier.smileRandomForest(100).train(training, training_property);
 var classified = dataset.classify(trained).clip(region);
 
 // Export resulting GeoTiff
