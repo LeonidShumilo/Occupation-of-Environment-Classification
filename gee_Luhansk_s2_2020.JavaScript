@@ -103,7 +103,7 @@ var dataset = dataset2
               .addBands(dataset9)
               .clip(geometry);
 
-//Sampling and model's training
+//Sampling, model's training and classification 
 var training_scale = 10;
 var training_property = 'CLASS';
 var training = dataset.sampleRegions({
