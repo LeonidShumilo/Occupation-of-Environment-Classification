@@ -1,3 +1,5 @@
+//Import of training data feature collection and AOI polygon
+
 //var table - imported training points with atribute "CLASS"
 //var table2 - imported boundaries of the area of interest (Luhansk region)
 var region = table2;
