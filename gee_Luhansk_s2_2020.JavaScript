@@ -114,7 +114,7 @@ var training = dataset.sampleRegions({
 var trained = ee.Classifier.smileRandomForest(200).train(training, training_property);
 var classified = dataset.classify(trained).clip(geometry);
 
-// Export a cloud-optimized GeoTIFF.
+// Export resulting GeoTiff
 Export.image.toDrive({
   image: classified.toByte(),
   description: 'Map2020_15102020',
