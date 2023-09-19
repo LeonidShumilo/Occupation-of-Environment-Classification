@@ -5,6 +5,8 @@
 var region = table2;
 var train_set = table
 
+//Functions for the cloud masking and images processing
+
 function maskL8sr(image) {
   var cloudShadowBitMask = (1 << 3);
   var cloudsBitMask = (1 << 5);
