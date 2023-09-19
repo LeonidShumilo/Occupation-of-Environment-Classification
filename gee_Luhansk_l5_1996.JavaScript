@@ -13,6 +13,9 @@ function CloudRemoval (image) {
   var removeCloud = image.mask(image.select('BQA').eq(672))
   return removeCloud
 }
+
+// Satellite images compositing
+
 var l8_1_1 = l8_raw2.filterBounds(table2).filterDate('1996-08-01','1996-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_1_2 = l8_raw2.filterBounds(table2).filterDate('1996-08-01','1996-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_1 = ee.ImageCollection([l8_1_2,l8_1_1]).mosaic();
@@ -42,11 +45,8 @@ var l8_9 = ee.ImageCollection([l8_8,l8_9_1]).mosaic();
 var l8_10_1 = l8_raw2.filterBounds(table2).filterDate('1995-09-01','1995-10-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_10_2 = l8_raw2.filterBounds(table2).filterDate('1995-09-01','1995-10-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_10 = ee.ImageCollection([l8_9,l8_10_1]).mosaic();
-//Map.addLayer(l8_9)
-
 
 var l8_merged = l8_1.addBands(l8_3).addBands(l8_6).addBands(l8_8).addBands(l8_9).addBands(l8_10);
-Map.addLayer(l8_merged)
 
 var label = 'CLASS_1996'
 Map.addLayer(table)
