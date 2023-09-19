@@ -16,7 +16,9 @@ function maskL8sr(image) {
   return image.updateMask(mask);
 }
 
-var bb = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
+var bb = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7']; //Bands for selection
+
+// Satellite images compositing
 
 var dataset1 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-04-01', '2013-06-01').map(maskL8sr).select(bb).median().clip(region);
 var dataset2 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-06-01', '2013-07-01').map(maskL8sr).select(bb).median().clip(region);
