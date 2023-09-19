@@ -1,4 +1,7 @@
-//Import of training data feature collection
+//Import of training data feature collection and AOI polygon
+
+//var table - imported training points with atribute "CLASS"
+//var table2 - imported boundaries of the area of interest (Luhansk region)
 var train_set = table
 
 train_set = train_set.filterBounds(geometry)
