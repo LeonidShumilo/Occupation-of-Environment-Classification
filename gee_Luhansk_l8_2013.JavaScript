@@ -1,5 +1,7 @@
-var region = geometry;
-var train_set = ee.FeatureCollection('ft:1H5K4B7jcMtyMg15IW67RV1YKz68EQMhDm-wm5r4U'); //LUG_DON 2013 new point
+//var table - imported training points with atribute "CLASS"
+//var table2 - imported boundaries of the area of interest (Luhansk region)
+var region = table2;
+var train_set = table
 
 function maskL8sr(image) {
   var cloudShadowBitMask = (1 << 3);
