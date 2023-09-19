@@ -8,6 +8,8 @@ train_set = train_set.filterBounds(geometry)
 train_set = train_set.map(function(f) { return f.buffer(3)});
 Map.addLayer(train_set)
 
+//Functions for the cloud masking and images processing
+
 function maskS2clouds(image) {
   var qa = image.select('QA60');
   var cloudBitMask = 1 << 10;
