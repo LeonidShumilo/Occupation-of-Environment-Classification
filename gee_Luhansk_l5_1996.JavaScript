@@ -50,19 +50,16 @@ var l8_10 = ee.ImageCollection([l8_9,l8_10_1]).mosaic();
 
 var l8_merged = l8_1.addBands(l8_3).addBands(l8_6).addBands(l8_8).addBands(l8_9).addBands(l8_10);
 
+//Sampling, model's training and classification 
+
 var label = 'CLASS_1996'
-Map.addLayer(table)
-print(l8_merged)
 var training = l8_merged.sampleRegions({
   collection: table,
   properties: [label],
   scale: 30
 });
-print(training)
 var trained = ee.Classifier.smileRandomForest(10).train(training, label)
 var classified = l8_merged.classify(trained).clip(table2)
-print(classified)
-Map.addLayer(classified.randomVisualizer(), {}, 'crop classification')
 
 Export.image.toDrive({
 'image': classified,
