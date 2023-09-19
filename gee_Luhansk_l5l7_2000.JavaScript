@@ -4,6 +4,9 @@
 //var table2 - imported boundaries of the area of interest (Luhansk region)
 var l8_raw2 = ee.ImageCollection("LANDSAT/LT05/C01/T1");
 var l7_1 = ee.ImageCollection("LANDSAT/LE07/C01/T1");
+
+//Functions for the cloud masking and images processing
+
 function CloudRemoval (image) {
   var removeCloud = image.mask(image.select('BQA').eq(672))
   return removeCloud
