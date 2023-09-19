@@ -6,6 +6,9 @@ var l8_raw2 = ee.ImageCollection("LANDSAT/LT05/C01/T1");
 var start_date = '1996-08-01';
 var end_date = '1996-11-01';
 var step = 30;
+
+//Functions for the cloud masking and images processing
+
 function CloudRemoval (image) {
   var removeCloud = image.mask(image.select('BQA').eq(672))
   return removeCloud
