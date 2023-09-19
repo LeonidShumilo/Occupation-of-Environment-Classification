@@ -28,7 +28,8 @@ var dataset4 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR').filterDate('2013-08-
 //Merging of datasets
 
 var dataset = dataset1.addBands(dataset2).addBands(dataset3).addBands(dataset4).clip(region);
-Map.addLayer(dataset)
+
+//Sampling, model's training and classification 
 
 var train_set = train_set.filterBounds(region);
 train_set = train_set.map(function(f) { return f.buffer(15)});
