@@ -1,4 +1,4 @@
-#Import of training data feature collection
+//Import of training data feature collection
 var train_set = table
 
 train_set = train_set.filterBounds(geometry)
@@ -98,7 +98,7 @@ var dataset = dataset2
               .addBands(dataset9)
               .clip(geometry);
 
-#Sampling and model's training
+//Sampling and model's training
 var training_scale = 10;
 var training_property = 'CLASS';
 var training = dataset.sampleRegions({
