@@ -70,7 +70,8 @@ var training = l8_merged.sampleRegions({
 });
 var trained = ee.Classifier.smileRandomForest(10).train(training, label)
 var classified = l8_merged.classify(trained).clip(table2)
-Map.addLayer(classified.randomVisualizer(), {}, 'crop classification')
+
+// Export resulting GeoTiff
 
 Export.image.toDrive({
 'image': classified,
