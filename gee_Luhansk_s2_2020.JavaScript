@@ -93,7 +93,7 @@ var rgbViss = {
   bands: ['B4', 'B3', 'B2'],
 };
 
-#Merging of datasets
+//Merging of datasets
 var dataset = dataset2
               .addBands(dataset3)
               .addBands(dataset4)
