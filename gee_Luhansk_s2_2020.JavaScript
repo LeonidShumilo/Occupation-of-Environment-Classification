@@ -105,7 +105,7 @@ var dataset = dataset2
 
 //Sampling, model's training and classification 
 var training_scale = 10;
-var training_property = 'CLASS';
+var training_property = 'CLASS_2020';
 var training = dataset.sampleRegions({
   collection:train_set, 
   scale: training_scale,
