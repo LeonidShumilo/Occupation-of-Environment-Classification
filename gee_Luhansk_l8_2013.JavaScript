@@ -35,7 +35,7 @@ var train_set = train_set.filterBounds(region);
 train_set = train_set.map(function(f) { return f.buffer(15)});
 
 var training_scale = 10;
-var training_property = 'CLASS';
+var training_property = 'CLASS_2013';
 
 var training = dataset.sampleRegions(train_set, null, training_scale);
 
