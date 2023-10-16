@@ -1,1 +1,1 @@
-
+Training data polygons used to create 5000 training samples points for GEE land cover classification using "Random Points Inside Polygons" function in QGIS. Polygons were manually labeled based on available satellite data. 
