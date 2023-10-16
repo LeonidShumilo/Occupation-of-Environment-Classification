@@ -1,1 +1,1 @@
-
+1200 validation samples points for land cover classification that rendomly distributed on map and different classes of land cover. Points were manually labeled based on available satellite data. 
