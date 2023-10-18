@@ -3,6 +3,7 @@
 //var table - imported training points with atribute "CLASS"
 //var table2 - imported boundaries of the area of interest (Luhansk region)
 var l8_raw2 = ee.ImageCollection("LANDSAT/LT05/C01/T1");
+var l8_raw = ee.ImageCollection("LANDSAT/LT05/C01/T2");
 var l7_1 = ee.ImageCollection("LANDSAT/LE07/C01/T1");
 
 //Functions for the cloud masking and images processing
