@@ -77,7 +77,7 @@ var classified = l8_merged.classify(trained).clip(table2)
 Export.image.toDrive({
 'image': classified,
 'description': 'land_cover_classification',
-'fileNamePrefix': 'Luhansk_L5_2000',
+'fileNamePrefix': 'Luhansk_L5L7_2000',
 'scale': 30,
 'region': table2,
 'crs': 'EPSG:32636',
