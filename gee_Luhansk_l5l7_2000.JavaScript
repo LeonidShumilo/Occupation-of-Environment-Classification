@@ -14,45 +14,45 @@ function CloudRemoval (image) {
 
 // Satellite images compositing
 
-var l8_1_1 = l8_raw2.filterBounds(table2).filterDate('1999-05-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_1_2 = l8_raw2.filterBounds(table2).filterDate('1999-05-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_1_1 = l8_raw2.filterBounds(table2).filterDate('1999-05-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate('1999-05-01','1999-06-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_1_2 = l8_raw2.filterBounds(table2).filterDate('1999-05-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate('1999-05-01','1999-06-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_1 = ee.ImageCollection([l8_1_2,l8_1_1]).mosaic();
 
-var l8_2_1 = l8_raw2.filterBounds(table2).filterDate('1999-06-01','1999-07-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_2_2 = l8_raw2.filterBounds(table2).filterDate('1999-06-01','1999-07-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_2_1 = l8_raw2.filterBounds(table2).filterDate('1999-06-01','1999-07-01').merge(l8_raw.filterBounds(table2).filterDate('1999-06-01','1999-07-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_2_2 = l8_raw2.filterBounds(table2).filterDate('1999-06-01','1999-07-01').merge(l8_raw.filterBounds(table2).filterDate('1999-06-01','1999-07-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_2 = ee.ImageCollection([l8_1,l8_2_1]).mosaic();
 
-var l8_3_1 = l8_raw2.filterBounds(table2).filterDate('1999-07-01','1999-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_3_2 = l8_raw2.filterBounds(table2).filterDate('1999-07-01','1999-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_3_1 = l8_raw2.filterBounds(table2).filterDate('1999-07-01','1999-09-01').merge(l8_raw.filterBounds(table2).filterDate('1999-07-01','1999-09-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_3_2 = l8_raw2.filterBounds(table2).filterDate('1999-07-01','1999-09-01').merge(l8_raw.filterBounds(table2).filterDate('1999-07-01','1999-09-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_3 = ee.ImageCollection([l8_2,l8_3_1]).mosaic();
 
-var l8_4_1 = l8_raw2.filterBounds(table2).filterDate('1999-09-01','1999-12-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_4_2 = l8_raw2.filterBounds(table2).filterDate('1999-09-01','1999-12-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_4_1 = l8_raw2.filterBounds(table2).filterDate('1999-09-01','1999-12-01').merge(l8_raw.filterBounds(table2).filterDate('1999-09-01','1999-12-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_4_2 = l8_raw2.filterBounds(table2).filterDate('1999-09-01','1999-12-01').merge(l8_raw.filterBounds(table2).filterDate('1999-09-01','1999-12-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_4 = ee.ImageCollection([l8_4_2,l8_4_1]).mosaic();
 
-var l8_5_1 = l8_raw2.filterBounds(table2).filterDate('1999-03-01','1999-05-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_5_2 = l8_raw2.filterBounds(table2).filterDate('1999-03-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_5_1 = l8_raw2.filterBounds(table2).filterDate('1999-03-01','1999-05-01').merge(l8_raw.filterBounds(table2).filterDate('1999-03-01','1999-05-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_5_2 = l8_raw2.filterBounds(table2).filterDate('1999-03-01','1999-06-01').merge(l8_raw.filterBounds(table2).filterDate('1999-03-01','1999-05-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_5 = ee.ImageCollection([l8_1,l8_5_1]).mosaic();
 
-var l8_7_1 = l8_raw2.filterBounds(table2).filterDate('2000-07-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_7_2 = l8_raw2.filterBounds(table2).filterDate('2000-07-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_7_1 = l8_raw2.filterBounds(table2).filterDate('2000-07-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate('2000-07-01','2000-09-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_7_2 = l8_raw2.filterBounds(table2).filterDate('2000-07-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate('2000-07-01','2000-09-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_7 = ee.ImageCollection([l8_7_2,l8_7_1]).mosaic();
 
-var l8_8_1 = l8_raw2.filterBounds(table2).filterDate('2000-04-01','2000-07-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
-var l8_8_2 = l8_raw2.filterBounds(table2).filterDate('2000-04-01','2000-07-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_8_1 = l8_raw2.filterBounds(table2).filterDate('2000-04-01','2000-07-01').merge(l8_raw.filterBounds(table2).filterDate('2000-04-01','2000-07-01')).map(CloudRemoval).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
+var l8_8_2 = l8_raw2.filterBounds(table2).filterDate('2000-04-01','2000-07-01').merge(l8_raw.filterBounds(table2).filterDate('2000-04-01','2000-07-01')).median().clip(table2).select(['B1','B2','B3','B4','B5','B6','B7']);
 var l8_8 = ee.ImageCollection([l8_8_2,l8_8_1]).mosaic();
 
 var l7_col = l7_1.filterBounds(table2).filterDate('1999-01-01','2001-01-01').merge(l7_2.filterBounds(table2).filterDate('1999-01-01','2001-01-01'));
 
-var l8_12_1 = l7_col.filterBounds(table2).filterDate('1999-06-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
-var l8_12_2 = l7_col.filterBounds(table2).filterDate('1999-05-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
-var l8_12_3 = l7_col.filterBounds(table2).filterDate('1999-05-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_12_1 = l7_col.filterBounds(table2).filterDate('1999-06-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate('1999-06-01','1999-11-01')).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_12_2 = l7_col.filterBounds(table2).filterDate('1999-05-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate('1999-06-01','1999-11-01')).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_12_3 = l7_col.filterBounds(table2).filterDate('1999-05-01','1999-11-01').merge(l8_raw.filterBounds(table2).filterDate('1999-06-01','1999-11-01')).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
 
 var l8_12 = ee.ImageCollection([l8_12_3,l8_12_2,l8_12_1]).mosaic();
 
-var l8_13_1 = l7_col.filterBounds(table2).filterDate('2000-06-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
-var l8_13_2 = l7_col.filterBounds(table2).filterDate('2000-03-01','2000-12-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
-var l8_13_3 = l7_col.filterBounds(table2).filterDate('2000-03-01','2000-12-01').merge(l8_raw.filterBounds(table2).filterDate(start_date,end_date)).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_13_1 = l7_col.filterBounds(table2).filterDate('2000-06-01','2000-09-01').merge(l8_raw.filterBounds(table2).filterDate('2000-06-01','2000-09-01')).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_13_2 = l7_col.filterBounds(table2).filterDate('2000-03-01','2000-12-01').merge(l8_raw.filterBounds(table2).filterDate('2000-03-01','2000-12-01')).map(CloudRemoval).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
+var l8_13_3 = l7_col.filterBounds(table2).filterDate('2000-03-01','2000-12-01').merge(l8_raw.filterBounds(table2).filterDate('2000-03-01','2000-12-01')).select(['B1','B2','B3','B4','B5','B7']).median().clip(table2);
 
 var l8_13 = ee.ImageCollection([l8_13_3,l8_13_2,l8_13_1]).mosaic();
 
